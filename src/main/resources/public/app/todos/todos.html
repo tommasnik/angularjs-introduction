@@ -1,0 +1,19 @@
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="todo in todos">
+            <td>{{todo.id}}</td>
+            <td><a ui-sref="edit-todo({id: todo.id})">{{todo.name}}</a></td>
+            <td><a class="btn btn-default btn-xs"> <i class="fa fa-trash-o" ng-click="removeTodo(todo)"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" ui-sref="create-todo">Add todo</button>
+</div>

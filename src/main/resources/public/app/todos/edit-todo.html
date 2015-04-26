@@ -1,0 +1,8 @@
+<form name="todoForm" ng-submit="submitForm()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input ng-model="todo.name" required type="text" class="form-control" id="name" placeholder="Todo text">
+    </div>
+    <input type="submit" class="btn btn-success" value="Save">
+    <input type="button" class="btn btn-default" value="Cancel" ui-sref="todos">
+</form>
