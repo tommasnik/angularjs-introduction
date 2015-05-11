@@ -8,6 +8,7 @@
     "gulp": "^3.8.11",
     "gulp-inject": "^1.2.0",
     "main-bower-files": "^2.6.2",
-    "gulp-connect": "^2.2.0"
+    "gulp-connect": "^2.2.0",
+    "gulp-watch": "~4.2.4"
   }
 }

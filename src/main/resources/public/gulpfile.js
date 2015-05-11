@@ -2,11 +2,15 @@ var gulp = require('gulp');
 var bowerFiles = require('main-bower-files');
 var inject = require('gulp-inject');
 var connect = require('gulp-connect');
+var watch = require('gulp-watch');
 
-gulp.task('default', function () {
+var scriptsMatcher = './app/**/*.js'
+var cssMatcher = './css/*.css';
 
-    var scripts = gulp.src(['./app/**/*.js'], {read: false});
-    var css = gulp.src(['./css/*.css'], {read: false});
+gulp.task('inject', function () {
+
+    var scripts = gulp.src([ scriptsMatcher], {read: false});
+    var css = gulp.src([ cssMatcher], {read: false});
 
     gulp.src('./index.html')
     .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
@@ -15,8 +19,8 @@ gulp.task('default', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('serve', function () {
-    connect.server({
-        livereload: true
+gulp.task('default', function() {
+    watch(scriptsMatcher, function() {
+        gulp.run('inject');
     });
 });

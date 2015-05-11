@@ -1,10 +1,14 @@
 package cz.artin.angularjs.repository;
 
-import com.sun.javafx.collections.transformation.SortedList;
 import cz.artin.angularjs.dto.Todo;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Tomas Masnik (tomas.masnik@artin.cz)
@@ -22,12 +26,14 @@ public class TodoRepository {
     }
 
     public List<Todo> all() {
-        return new SortedList<>(new ArrayList<>(todos.values()), new Comparator<Todo>() {
+        ArrayList<Todo> result = new ArrayList<>(todos.values());
+        Collections.sort(result, new Comparator<Todo>() {
             @Override
             public int compare(Todo o1, Todo o2) {
                 return o1.getId().intValue() - o2.getId().intValue();
             }
         });
+        return result;
     }
 
     public Todo create(Todo todo) {
